@@ -1,30 +1,34 @@
-const caesarCipher = (str, num) => {
-  num = num % 26
-  const lowerCaseString = str.toLowerCase()
-  let alphabet = 'abcdefghijklmnopqrstuwxyz'.split('')
-  let newString = ''
+const caesarCipher = (sentenca, numero) => {
+  numero = numero % 26;
+  const sentencaEmCaixaBaixa = sentenca.toLowerCase();
+  let alfabeto = 'abcdefghijklmnopqrstuwxyz'.split('');
+  let sentencaCifrada = '';
 
-  for (var i = 0; i < lowerCaseString.length; i++) {
-    var currentLetter = lowerCaseString[i];
-    if (currentLetter === ' ') {
-      newString += currentLetter;
+  for (var i = 0; i < sentencaEmCaixaBaixa.length; i++) {
+    var letraAtual = sentencaEmCaixaBaixa[i];
+    if (letraAtual === ' ') {
+      sentencaCifrada += letraAtual;
       continue;
     }
 
-
-    const currentIndex = alphabet.indexOf(currentLetter)
-    let newIndex = currentIndex + num
-    if (newIndex > 25) newIndex = newIndex - 26
-    if (newIndex < 0) newIndex = 26 + newIndex
-    if (str[i] === str[i].toUpperCase()) {
-      newString += alphabet[newIndex].toUpperCase();
+    const currentIndex = alfabeto.indexOf(letraAtual);
+    let newIndex = currentIndex + numero;
+    if (newIndex > 25) {
+      newIndex = newIndex - 26;
     }
-    else newString += alphabet[newIndex]
-
+    if (newIndex < 0) {
+      newIndex = 26 + newIndex;
+    }
+    if (sentenca[i] === sentenca[i].toUpperCase()) {
+      sentencaCifrada += alfabeto[newIndex].toUpperCase();
+    }
+    else {
+      sentencaCifrada += alfabeto[newIndex];
+    }
   }
-  return newString
+  return sentencaCifrada;
 }
 
-const ccTest = caesarCipher('abc', 0)
+const ccTest = caesarCipher('abcde', 1)
 
 console.log(ccTest)
